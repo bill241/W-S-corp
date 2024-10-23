@@ -165,7 +165,7 @@ a:hover {
 
 /* ACCUEIL */
 #accueil {
-  background: url('images/accueil.jpg') no-repeat center center/cover;
+  background: url('accueil.jpg') no-repeat center center/cover;
   min-height: 600px;
   display: flex;
   align-items: center;
