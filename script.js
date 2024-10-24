@@ -35,47 +35,57 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-// Gestion du formulaire de contact avec EmailJS
-const form = document.getElementById('contactForm');
-const messageStatus = document.getElementById('messageStatus');
+// Gestion du formulaire de contact avec EmailJS et reCAPTCHA
+        const form = document.getElementById('contactForm');
+        const messageStatus = document.getElementById('messageStatus');
 
-form.addEventListener('submit', function(event) {
-    event.preventDefault();
+        form.addEventListener('submit', function(event) {
+            event.preventDefault();
 
-    const nom = document.getElementById('nom').value;
-    const email = document.getElementById('email').value;
-    const message = document.getElementById('message').value;
+            // Vérifiez le reCAPTCHA
+            const recaptchaResponse = grecaptcha.getResponse();
+            if (recaptchaResponse.length === 0) {
+                alert("Veuillez confirmer que vous n'êtes pas un robot.");
+                return;
+            }
 
-    emailjs.send('w&scorporation_admin', 'template_4u7uycs', {
-        nom: nom,
-        email: email,
-        message: message
-    })
-    .then(function(response) {
-        console.log('Email envoyé avec succès!', response.status, response.text);
-        showSuccessMessage();
-        form.reset();
-    }, function(error) {
-        console.log('Erreur lors de l\'envoi de l\'email...', error);
-        showErrorMessage();
-    });
-});
+            const nom = document.getElementById('nom').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
 
-function showSuccessMessage() {
-    const successMessage = document.createElement('div');
-    successMessage.classList.add('alert', 'alert-success', 'animate-fade-in');
-    successMessage.textContent = 'Votre message a bien été envoyé !';
-    messageStatus.innerHTML = '';
-    messageStatus.appendChild(successMessage);
-}
+            // Envoyer l'email via EmailJS
+            emailjs.send('w&scorporation_admin', 'template_4u7uycs', {
+                nom: nom,
+                email: email,
+                message: message,
+                recaptcha: recaptchaResponse // Inclure la réponse reCAPTCHA
+            })
+            .then(function(response) {
+                console.log('Email envoyé avec succès!', response.status, response.text);
+                showSuccessMessage();
+                form.reset();
+                grecaptcha.reset(); // Réinitialiser le reCAPTCHA après l'envoi
+            }, function(error) {
+                console.log('Erreur lors de l\'envoi de l\'email...', error);
+                showErrorMessage();
+            });
+        });
 
-function showErrorMessage() {
-    const errorMessage = document.createElement('div');
-    errorMessage.classList.add('alert', 'alert-danger', 'animate-fade-in');
-    errorMessage.textContent = 'Une erreur s\'est produite. Veuillez réessayer plus tard.';
-    messageStatus.innerHTML = '';
-    messageStatus.appendChild(errorMessage);
-}
+        function showSuccessMessage() {
+            const successMessage = document.createElement('div');
+            successMessage.classList.add('alert', 'alert-success');
+            successMessage.textContent = 'Votre message a bien été envoyé !';
+            messageStatus.innerHTML = '';
+            messageStatus.appendChild(successMessage);
+        }
+
+        function showErrorMessage() {
+            const errorMessage = document.createElement('div');
+            errorMessage.classList.add('alert', 'alert-danger');
+            errorMessage.textContent = 'Une erreur s\'est produite. Veuillez réessayer plus tard.';
+            messageStatus.innerHTML = '';
+            messageStatus.appendChild(errorMessage);
+        }
 
 // Initialisation d'EmailJS
 (function() {
