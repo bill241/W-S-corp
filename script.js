@@ -165,3 +165,6 @@ window.onclick = function(event) {
         modal.style.display = "none"; // Masque le modal
     }
 };
+
+function onloadCallback() {
+    console.log("reCAPTCHA loaded!");
