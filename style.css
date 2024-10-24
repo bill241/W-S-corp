@@ -490,3 +490,7 @@ a:focus, .btn:focus {
     text-decoration: none;
     cursor: pointer;
 }
+.g-recaptcha {
+    border: 2px solid red; /* Bordure rouge pour le repérer facilement */
+    padding: 10px; /* Ajoutez un peu d'espace autour */
+}
