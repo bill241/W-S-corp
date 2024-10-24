@@ -35,7 +35,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-// Gestion du formulaire de contact avec EmailJS et reCAPTCHA
+   // Gestion du formulaire de contact avec EmailJS et reCAPTCHA
         const form = document.getElementById('contactForm');
         const messageStatus = document.getElementById('messageStatus');
 
@@ -65,11 +65,13 @@ document.addEventListener('DOMContentLoaded', function() {
                 showSuccessMessage();
                 form.reset();
                 grecaptcha.reset(); // Réinitialiser le reCAPTCHA après l'envoi
-            }, function(error) {
+                function onloadCallback() {
+    console.log("reCAPTCHA loaded!");
+    
+           function(error) {
                 console.log('Erreur lors de l\'envoi de l\'email...', error);
                 showErrorMessage();
-            });
-        });
+            
 
         function showSuccessMessage() {
             const successMessage = document.createElement('div');
@@ -86,7 +88,7 @@ document.addEventListener('DOMContentLoaded', function() {
             messageStatus.innerHTML = '';
             messageStatus.appendChild(errorMessage);
         }
-
+        
 // Initialisation d'EmailJS
 (function() {
     emailjs.init("47Lvn8HBkIv_7OJt7");
@@ -165,6 +167,4 @@ window.onclick = function(event) {
         modal.style.display = "none"; // Masque le modal
     }
 };
-
-function onloadCallback() {
-    console.log("reCAPTCHA loaded!");
+ 
