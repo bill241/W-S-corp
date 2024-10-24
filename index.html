@@ -156,7 +156,30 @@
         <h2 class="text-center mb-5 animate-slide-up">À Propos de W&S Corporation</h2>
         <p class="text-center animate-fade-in">W&S Corporation est une entreprise innovante, spécialisée dans la création de solutions audiovisuelles et numériques. Nous nous engageons à offrir des services de haute qualité pour répondre aux besoins variés de nos clients.</p>
     </section>
+          <section id="contact" class="container">
       
+        <h2 class="text-center mb-5 animate-slide-up">Contactez-Nous</h2>
+        <div class="col-md-8 offset-md-2">
+            <div id="messageStatus"></div>
+            <form id="contactForm" class="mt-4 animate-fade-in">
+                <div class="form-group animate-fade-in">
+                    <label for="nom">Nom :</label>
+                    <input type="text" id="nom" name="nom" class="form-control" required>
+                </div>
+                <div class="form-group animate-fade-in">
+                    <label for="email">Email :</label>
+                    <input type="email" id="email" name="email" class="form-control" required>
+                </div>
+                <div class="form-group animate-fade-in">
+                    <label for="message">Message :</label>
+                    <textarea id="message" name="message" class="form-control" required></textarea>
+                </div>
+                    <div class="g-recaptcha" data-sitekey="6Lf222oqAAAAAA5evplQgW9vX9ejFCfKWs0bPJhS"></div>
+                <button type="submit" class="btn btn-primary">Envoyer</button>
+            </form>
+        </div>
+    </section>
+</main>
 </main>
 
 <footer>
