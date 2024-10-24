@@ -155,7 +155,7 @@
         <h2 class="text-center mb-5 animate-slide-up">À Propos de W&S Corporation</h2>
         <p class="text-center animate-fade-in">W&S Corporation est une entreprise innovante, spécialisée dans la création de solutions audiovisuelles et numériques. Nous nous engageons à offrir des services de haute qualité pour répondre aux besoins variés de nos clients.</p>
     </section>
-    <section id="contact" class="container">
+      <section id="contact" class="container">
       
         <h2 class="text-center mb-5 animate-slide-up">Contactez-Nous</h2>
         <div class="col-md-8 offset-md-2">
@@ -173,10 +173,11 @@
                     <label for="message">Message :</label>
                     <textarea id="message" name="message" class="form-control" required></textarea>
                 </div>
+                    <div class="g-recaptcha" data-sitekey="6LeD0WoqAAAAAGiCjiP2DirMlRKE0ApUMWbUkZUt"></div>
                 <button type="submit" class="btn btn-primary">Envoyer</button>
             </form>
         </div>
-    </section>
+      </section>
 </main>
 
 <footer>
@@ -284,5 +285,6 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
     <script src="script.js"></script>
+    <script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit" async defer> </script>
 </body>
 </html>
